@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: SDET
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/sdet_db}
+    username: ${SPRING_DATASOURCE_USERNAME:sdet}
+    password: ${SPRING_DATASOURCE_PASSWORD:sdet}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+server:
+  port: 8098
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5433/sdet_db
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://postgres:5432/sdet_db
+  jpa:
+    show-sql: false
