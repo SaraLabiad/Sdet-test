@@ -23,6 +23,11 @@ This repository is a **starter scaffold** implementing the FX deals import API d
 ## Tests
 - Unit tests: `mvn test`
 - Coverage (JaCoCo): `mvn verify` (JaCoCo report will be generated)
+  Test : <img width="428" height="197" alt="image" src="https://github.com/user-attachments/assets/1d67bafb-2334-4bb4-af82-20acd618410b" />
+  test api : <img width="515" height="348" alt="image" src="https://github.com/user-attachments/assets/409a84ca-e3fd-4dd4-9e52-f8fa3dc73458" />
+  Deploy docker : <img width="1280" height="171" alt="image" src="https://github.com/user-attachments/assets/4f0a7f83-6ec5-4d6e-a79a-4461e338d415" />
+  Pg admin : <img width="1280" height="658" alt="image" src="https://github.com/user-attachments/assets/5a0f8785-15da-4d08-8ebf-c88a9ac2219a" />
+  Target : <img width="577" height="308" alt="image" src="https://github.com/user-attachments/assets/c0874866-e9be-4c46-bd84-a9860610d43c" />
 
 ## Notes
 This is a starter scaffold. You should:
