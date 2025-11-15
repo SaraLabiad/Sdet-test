@@ -13,6 +13,7 @@ This repository is a **starter scaffold** implementing the FX deals import API d
 
 ## Architecture Overview
 This service ingests FX deals in batches, validates and deduplicates them, then persists results to a PostgreSQL database. Partial successes are supported; failed rows are reported but do not block successful imports.
+
 [Client] → [REST Controller] → [Service Layer] → [Validation/Deduplication] → [Repository/JPA] → [Postgres DB]
 
 
