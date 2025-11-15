@@ -11,6 +11,11 @@ This repository is a **starter scaffold** implementing the FX deals import API d
 - Sample Postman collection and K6 script stub
 - Unit test examples
 
+  ## Architecture Overview
+This service ingests FX deals in batches, validates and deduplicates them, then persists results to a PostgreSQL database. Partial successes are supported; failed rows are reported but do not block successful imports.
+[Client] → [REST Controller] → [Service Layer] → [Validation/Deduplication] → [Repository/JPA] → [Postgres DB]
+
+
 ## How to run (local)
 
 1. Start Postgres:
@@ -28,6 +33,24 @@ This repository is a **starter scaffold** implementing the FX deals import API d
     - POST `http://localhost:8098/api/deals` with JSON array payload.
 
 <img width="500" alt="api test" src="https://github.com/user-attachments/assets/409a84ca-e3fd-4dd4-9e52-f8fa3dc73458" />
+
+## API Endpoints
+
+| Method | Endpoint        | Description                 | Sample Payload                                          |
+| ------ | --------------- | --------------------------- | ------------------------------------------------------- |
+| POST   | /api/deals      | Batch import FX deals       | [{"dealUniqueId":"A1","fromCurrencyIsoCode":"USD",...}] |
+| GET    | /api/deals      | List all deals              |                                                         |
+| GET    | /api/deals/test | API health check            |                                                         |
+| GET    | /api/deals/{id} | Fetch one deal by unique id |                                                         |
+
+## Requirements Mapping
+
+| Requirement                         | Location/Class                    | Test(s)                                   |
+| ----------------------------------- | --------------------------------- | ----------------------------------------- |
+| Mandatory request fields            | Deal,DealRequest                  | DealServiceTest.validate_and_save_success |
+| Row validation & correct datatypes  | DealValidator                     | DealServiceTest.invalid_amount_throws     |
+| Deduplication (no duplicate import) | DeduplicationService              | (Add a deduplication unit test!)          |
+| Partial success, no rollback        | Service logic, transaction config | (Add/mention batch/partial import test)   |
 
 ## Tests
 - Unit tests: `mvn test`
