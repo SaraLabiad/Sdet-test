@@ -22,6 +22,7 @@ This service ingests FX deals in batches, validates and deduplicates them, then 
     - Using Docker Compose: `docker compose up -d`
 
 <img width="800" alt="docker deployment" src="https://github.com/user-attachments/assets/4f0a7f83-6ec5-4d6e-a79a-4461e338d415" />
+
 *Docker containers running successfully after startup.*
 
 2. Build & run:
@@ -29,12 +30,14 @@ This service ingests FX deals in batches, validates and deduplicates them, then 
     - `java -jar target/deal-importer-0.0.1-SNAPSHOT.jar`
 
 <img width="500" alt="build target" src="https://github.com/user-attachments/assets/c0874866-e9be-4c46-bd84-a9860610d43c" />
+
 *Maven build completed, JAR generated.*
 
 3. API:
     - POST `http://localhost:8098/api/deals` with JSON array payload.
 
 <img width="500" alt="api test" src="https://github.com/user-attachments/assets/409a84ca-e3fd-4dd4-9e52-f8fa3dc73458" />
+
 *Example API response confirming successful deal batch import.*
 
 ## API Endpoints
@@ -60,6 +63,7 @@ This service ingests FX deals in batches, validates and deduplicates them, then 
 - Coverage (JaCoCo): `mvn verify` (JaCoCo report will be generated)
 
 <img width="400" alt="test results" src="https://github.com/user-attachments/assets/1d67bafb-2334-4bb4-af82-20acd618410b" />
+
 *Unit tests execution with successful validation and save.*
 
 ## Database
@@ -67,6 +71,7 @@ This service ingests FX deals in batches, validates and deduplicates them, then 
 pgAdmin available at `http://localhost:5050`
 
 <img width="800" alt="pgadmin dashboard" src="https://github.com/user-attachments/assets/5a0f8785-15da-4d08-8ebf-c88a9ac2219a" />
+
 *Database schema and activity monitored in pgAdmin.*
 
 ## Notes
